@@ -33,3 +33,108 @@ while True:
 # Checking to see if a player has won #
 # Needs to take in the current board state (post-move) and then return whether there is a current win #
 # Execute this within the while True loop as a break-if statement #
+
+# Check horizontal wins #
+
+def horizontal_winner(current_board):
+	# row one #
+	x1 = 0
+	o1 = 0
+	for i in range(3):
+		if current_board[0][i] == 'X':
+			x1 += 1
+		elif current_board[0][i] == 'O':
+			o1 += 1
+	if x1 == 3:
+		print('X wins!')
+	if o1 == 3:
+		print('O wins!')
+	# row two #
+	x2 = 0
+	o2 = 0
+	for i in range(3):
+		if current_board[1][i] == 'X':
+			x2 += 1
+		if current_board[1][i] == 'O':
+			o2 += 1
+	if x2 == 3:
+		print('X wins!')
+	if o2 == 3:
+		print('O wins!')
+	# row 3 #
+	x3 = 0
+	o3 = 0
+	for i in range(3):
+		if current_board[2][i] == 'X':
+			x3 += 1
+		if current_board[2][i] == 'O':
+			o3 += 1
+	if x3 == 3:
+		print('X wins!')
+	if o3 == 3:
+		print('O wins!')
+
+def vertical_winner(current_board):
+	# column one #
+	x1 = 0
+	o1 = 0
+	for i in range(3):
+		if current_board[i][0] == 'X':
+			x1 += 1
+		elif current_board[i][0] == 'O':
+			o1 += 1
+	if x1 == 3:
+		print('X wins!')
+	if o1 == 3:
+		print('O wins!')
+	# row two #
+	x2 = 0
+	o2 = 0
+	for i in range(3):
+		if current_board[i][1] == 'X':
+			x2 += 1
+		if current_board[i][1] == 'O':
+			o2 += 1
+	if x2 == 3:
+		print('X wins!')
+	if o2 == 3:
+		print('O wins!')
+	# row 3 #
+	x3 = 0
+	o3 = 0
+	for i in range(3):
+		if current_board[i][2] == 'X':
+			x3 += 1
+		if current_board[i][2] == 'O':
+			o3 += 1
+	if x3 == 3:
+		print('X wins!')
+	if o3 == 3:
+		print('O wins!')
+
+def diagonal_checker(current_board):
+	# diagonal 1 checking from (0,0) to (2,2)
+	x1 = 0
+	o1 = 0
+	for i in range(3):
+		if current_board[i][i] == 'X':
+			x1 += 1
+		if current_board[i][i] == 'O':
+			o1 += 1
+	if x1 == 3:
+		print('X wins!')
+	if o1 == 3:
+		print('O wins!')
+	# diagonal 2 checking from (0, 2) to (2, 0)
+	x2 = 0
+	o2 = 0
+	for i in range(3):
+		if current_board[i][-i+2] == 'X':
+			x2 += 1
+		if current_board[i][-i+2] == 'O':
+			o2 += 1
+	if x2 == 3:
+		print('X wins!')
+	if o2 == 3:
+		print('O wins!')
+
