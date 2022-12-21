@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import win_checking
 
 # Creating the board #
 
@@ -9,7 +10,7 @@ new_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
 current_board = new_board
 
-# Creating a render function that visually represents the board #
+# Creating a render function that visually represents the board in the command line #
 
 def render_board(current_board):
 	print('    0     1     2')
@@ -19,22 +20,7 @@ def render_board(current_board):
 	print('2' ' | ', current_board[2][0], '   ', current_board[2][1], '   ', current_board[2][2], ' |')
 	print('    ---------------')
 
-render_board(current_board)
-
-# User input for moves #
-
-while True:
-	x_coord = int(input('What is your desired X co-ordinate?: '))
-	y_coord = int(input('What is your desired Y co-ordinate?: '))
-	assign_player = input('What is your token (X or O)?: ')
-	current_board[x_coord][y_coord] = assign_player
-	render_board(current_board)
-
-# Checking to see if a player has won #
-# Needs to take in the current board state (post-move) and then return whether there is a current win #
-# Execute this within the while True loop as a break-if statement #
-
-# Check horizontal wins #
+# Defining functions that determine whether a player has won #
 
 def horizontal_winner(current_board):
 	# row one #
@@ -112,7 +98,7 @@ def vertical_winner(current_board):
 	if o3 == 3:
 		print('O wins!')
 
-def diagonal_checker(current_board):
+def diagonal_winner(current_board):
 	# diagonal 1 checking from (0,0) to (2,2)
 	x1 = 0
 	o1 = 0
@@ -137,4 +123,20 @@ def diagonal_checker(current_board):
 		print('X wins!')
 	if o2 == 3:
 		print('O wins!')
+
+render_board(current_board)
+
+# User input for moves #
+
+while True:
+	x_wins = False
+	o_wins = False
+	x_coord = int(input('What is your desired X co-ordinate?: '))
+	y_coord = int(input('What is your desired Y co-ordinate?: '))
+	assign_player = input('What is your token (X or O)?: ')
+	current_board[x_coord][y_coord] = assign_player
+	render_board(current_board)
+	horizontal_winner(current_board)
+	vertical_winner(current_board)
+	diagonal_winner(current_board)
 
