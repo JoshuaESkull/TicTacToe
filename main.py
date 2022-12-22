@@ -1,6 +1,13 @@
 import sys
-import numpy as np
-import win_checking
+
+print(r"""
+	  _______ _   _______      _______         
+ |__   __(_) |__   __|    |__   __|        
+    | |   _  ___| | __ _  ___| | ___   ___ 
+    | |  | |/ __| |/ _` |/ __| |/ _ \ / _ \
+    | |  | | (__| | (_| | (__| | (_) |  __/
+    |_|  |_|\___|_|\__,_|\___|_|\___/ \___|
+    """)
 
 # Creating the board #
 
@@ -126,17 +133,124 @@ def diagonal_winner(current_board):
 
 render_board(current_board)
 
+
 # User input for moves #
 
 while True:
-	x_wins = False
-	o_wins = False
 	x_coord = int(input('What is your desired X co-ordinate?: '))
 	y_coord = int(input('What is your desired Y co-ordinate?: '))
 	assign_player = input('What is your token (X or O)?: ')
 	current_board[x_coord][y_coord] = assign_player
 	render_board(current_board)
-	horizontal_winner(current_board)
-	vertical_winner(current_board)
-	diagonal_winner(current_board)
-
+		# row one #
+	x1 = 0
+	o1 = 0
+	for i in range(3):
+		if current_board[0][i] == 'X':
+			x1 += 1
+		elif current_board[0][i] == 'O':
+			o1 += 1
+	if x1 == 3:
+		print('X wins!')
+		break
+	if o1 == 3:
+		print('O wins!')
+		break
+	# row two #
+	x2 = 0
+	o2 = 0
+	for i in range(3):
+		if current_board[1][i] == 'X':
+			x2 += 1
+		if current_board[1][i] == 'O':
+			o2 += 1
+	if x2 == 3:
+		print('X wins!')
+		break
+	if o2 == 3:
+		print('O wins!')
+		break
+	# row 3 #
+	x3 = 0
+	o3 = 0
+	for i in range(3):
+		if current_board[2][i] == 'X':
+			x3 += 1
+		if current_board[2][i] == 'O':
+			o3 += 1
+	if x3 == 3:
+		print('X wins!')
+		break
+	if o3 == 3:
+		print('O wins!')
+		break
+	# column one #
+	x1 = 0
+	o1 = 0
+	for i in range(3):
+		if current_board[i][0] == 'X':
+			x1 += 1
+		elif current_board[i][0] == 'O':
+			o1 += 1
+	if x1 == 3:
+		print('X wins!')
+		break
+	if o1 == 3:
+		print('O wins!')
+		break
+	# row two #
+	x2 = 0
+	o2 = 0
+	for i in range(3):
+		if current_board[i][1] == 'X':
+			x2 += 1
+		if current_board[i][1] == 'O':
+			o2 += 1
+	if x2 == 3:
+		print('X wins!')
+		break
+	if o2 == 3:
+		print('O wins!')
+		break
+	# row 3 #
+	x3 = 0
+	o3 = 0
+	for i in range(3):
+		if current_board[i][2] == 'X':
+			x3 += 1
+		if current_board[i][2] == 'O':
+			o3 += 1
+	if x3 == 3:
+		print('X wins!')
+		break
+	if o3 == 3:
+		print('O wins!')
+		break
+	# diagonal 1 checking from (0,0) to (2,2)
+	x1 = 0
+	o1 = 0
+	for i in range(3):
+		if current_board[i][i] == 'X':
+			x1 += 1
+		if current_board[i][i] == 'O':
+			o1 += 1
+	if x1 == 3:
+		print('X wins!')
+		break
+	if o1 == 3:
+		print('O wins!')
+		break
+	# diagonal 2 checking from (0, 2) to (2, 0)
+	x2 = 0
+	o2 = 0
+	for i in range(3):
+		if current_board[i][-i+2] == 'X':
+			x2 += 1
+		if current_board[i][-i+2] == 'O':
+			o2 += 1
+	if x2 == 3:
+		print('X wins!')
+		break
+	if o2 == 3:
+		print('O wins!')
+		break
